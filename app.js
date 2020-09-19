@@ -1,12 +1,28 @@
 const express = require('express');
+const path = require('path');
+const index = require('./routes/index');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send("Welcome to the home page baby");
-});
+// serve static assets from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-const port = process.env.port || 3000;
-app.listen(port, () => {
-  console.log("It is working!");
-});
+// look for view html in the views directory
+app.set('views', path.join(__dirname, 'views'));
 
+// use ejs to render 
+app.set('view engine', 'ejs');
+
+// setup routes
+app.use('/', index);
+//app.use('/', tweets);
+//app.use('/second', news);
+
+
+
+
+module.exports = app;
+
+var port = process.env.PORT || 5000;
+app.listen(port, function () {
+  console.log('Listening on ' + port);
+});

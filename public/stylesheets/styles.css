@@ -61,6 +61,10 @@ a.links {
   color: #2B7BB9;
   word-wrap: break-word;
 }
+a:link {
+  text-decoration: none;
+
+}
 #tweet-list {
   position: relative;
 

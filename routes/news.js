@@ -68,7 +68,9 @@ function getOEmbed(tweet) {
 }
 
 module.exports.homelist = function (req, res) {
-
+  if (results.length > 200) {
+    results = null;
+  }
   if (oEmbedTweets.length !== 0) {
     params = {
       slug: 'finsite',

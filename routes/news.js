@@ -7,7 +7,7 @@ const sleep = require('sleep-promise');
 const twitter = new Twit(config.twitter);
 
 // you can play with the width here
-const TWEET_COUNT = 100;
+const TWEET_COUNT = 50;
 const MAX_WIDTH = 320;
 const OEMBED_URL = 'statuses/oembed';
 const USER_TIMELINE_URL = 'lists/statuses';
@@ -68,7 +68,7 @@ function getOEmbed(tweet) {
 }
 
 module.exports.homelist = function (req, res) {
-  if (results.length > 200) {
+  if (results.length > 75) {
     results = null;
   }
   if (oEmbedTweets.length !== 0) {
@@ -110,4 +110,5 @@ module.exports.homelist = function (req, res) {
 
   }); //end twitter  
 }; // end homelist export
+
 

@@ -3,7 +3,9 @@
 
 <head>
   <title>Financial News | YourFinancialIntel</title>
-  <title><%= title %></title>
+  <title>
+    <%= title %>
+  </title>
   <!-- Latest compiled and minified CSS -->
 
 
@@ -14,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>
   <!--	<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script> -->
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
@@ -60,20 +63,19 @@
   <div class="container-grid">
 
     <section>
-      <% let count = 0; let breakOn=Math.floor((tweets.length)/4); let remainder=tweets.length%4 %>
-      <% let firstBreak = (remainder > 0 ? breakOn + 1 : breakOn); %>
-      <% let secondBreak = (remainder > 1 ? breakOn*2+2 : firstBreak+breakOn); %>
-      <% let thirdBreak = (remainder > 1 ? breakOn*3+3 : secondBreak+breakOn); %>
-      <% tweets.forEach(function(tweet) { %>
-      <% count++; %>
-      <%  if ((count === firstBreak) || (count === secondBreak) || (count === thirdBreak))  { %>
+      <% let count=0; let breakOn=Math.floor((tweets.length)/4); let remainder=tweets.length%4 %>
+        <% let firstBreak=(remainder> 0 ? breakOn + 1 : breakOn); %>
+          <% let secondBreak=(remainder> 1 ? breakOn*2+2 : firstBreak+breakOn); %>
+            <% let thirdBreak=(remainder> 1 ? breakOn*3+3 : secondBreak+breakOn); %>
+              <% tweets.forEach(function(tweet) { %>
+                <% count++; %>
+                  <% if ((count===firstBreak) || (count===secondBreak) || (count===thirdBreak)) { %>
     </section>
     <section>
       <% } %>
-      <%- tweet.oEmbed.html %>
-      <%  }); %>
+        <%- tweet.oEmbed.html %>
+          <% }); %>
     </section>
-
   </div>
 
 </body>
